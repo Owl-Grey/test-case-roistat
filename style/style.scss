@@ -1,0 +1,20 @@
+// @font-face {
+//     font-family: Angelica; /* Имя шрифта */
+//     src: url("../fonts/ofont.ru_Angelica.ttf"); /* Путь к файлу со шрифтом */
+//    }
+@import "../style/header";
+@import "../style/main";
+@import "../style/footer";
+html, body {
+  margin: 0 0 0 0;
+  width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+  margin: 0;
+  padding: 0;
+}
+
+.disp{
+  display: none;
+}

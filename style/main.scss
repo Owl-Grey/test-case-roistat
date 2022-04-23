@@ -1,0 +1,74 @@
+.container{
+  width: 1600px;
+  margin: auto;
+  margin-top: 50px;
+}
+.film-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+}
+.film{
+  width: 380px;
+  margin-bottom: 80px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  img{
+    width: 380px;
+    height: 520px;
+  }
+  .film_info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    div{
+      display: flex;
+      width: 380px;
+      justify-content: space-evenly;
+      margin-top: 8px;
+    }
+    p{
+      font-size: 24px;
+      color: grey;
+    }
+    .name{
+      height: 80px;
+      align-items: center;
+      h1{
+        font-size: 32px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.pointer{
+  display: flex;
+  height: 55px;
+  margin-bottom: 50px;
+  div{
+    height: 53px;
+    font-size: 24px;
+    width: 210px;
+    text-align: center;
+    background-color: #87CEEB;
+    border-radius: 50px;
+    padding-top: 25px;
+    &:hover{
+      cursor: pointer;
+      transition-duration: .4s;
+      background-color: #00BFFF;
+    }
+  }
+}
+
+.pagination{
+  display: flex;
+  font-size: 24px;
+  div{
+    border: 1px solid;
+    margin-right: 10px;
+  }
+}
