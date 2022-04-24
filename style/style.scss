@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 
 .disp{
-  display: none;
+  display: none !important;
 }
 
 @media screen and (max-width: 1820px){
@@ -67,8 +67,17 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 @media screen and (max-width: 760px){
   .pointer{
-
-    justify-content: center;
+    flex-wrap: wrap;
+    div{
+      width: 130px;
+      height: 30px;
+      font-size: 15px;
+      border-radius: 28px;
+      margin-bottom: 10px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
   }
   header{
     height: 340px;

@@ -33,11 +33,11 @@ Filter();
 
 function filter_params(){
   for (i in films_list) {
-  fiction.push(films_list[i].fiction);
-  country.push(films_list[i].country);
-  year.push(films_list[i].year);
-}
-uniqarr()
+    fiction.push(films_list[i].fiction);
+    country.push(films_list[i].country);
+    year.push(films_list[i].year);
+  }
+  uniqarr()
 }
 
 function pagescount(arr){
@@ -55,7 +55,6 @@ function pagescount(arr){
 function pagination(current){
   $(".film-list").empty();
   head.scrollIntoView({block: "center", behavior: "smooth"})
-  console.log(1)
   if (current < pages){
     x = 16*current
   }
@@ -68,32 +67,42 @@ function pagination(current){
   }
 }
 
-function Filter() {
-  films =[];
-  if (localStorage.fiction!="" && localStorage.fiction!== undefined){
-    fict = localStorage.fiction;
-    for (i in films_list){
-      if (films_list[i].fiction == fict){
-        films.push(films_list[i])
-      }
-    }
-    if($(".pointer div").length>0){
-      if ($(".pointer div").hasClass("disp")){
-        $(".pointer div").removeClass("disp")
-      }
-      $(".pointer div").text(fict);
-    }
-    else{
-      block = '<div class="ret">'+fict+'</div>';
-      $(".pointer").append(block);
 
+function Filter() {
+  films=[];
+  if ((localStorage.fiction!="" && localStorage.fiction!== undefined) || (localStorage.country!="" && localStorage.country!== undefined) || (localStorage.year!="" && localStorage.year!== undefined)){
+    films = films_list;
+    fict = localStorage.fiction;
+    ctr = localStorage.country;
+    ye = localStorage.year;
+    if (fict!=""&& fict!=undefined){
+      films = films.filter((item) => item.fiction == fict);
+      if ($(".fict").hasClass("disp")){
+        $(".fict").removeClass("disp")
+      }
+      $(".fict").text(fict);
     }
+    if (ctr!=""&& ctr!=undefined){
+      films = films.filter((item) => item.country == ctr);
+      if ($(".ctr").hasClass("disp")){
+        $(".ctr").removeClass("disp")
+      }
+      $(".ctr").text(ctr);
+    }
+    if (ye!=""&& ye!=undefined){
+      films = films.filter((item) => item.year == ye);
+      if ($(".ye").hasClass("disp")){
+        $(".ye").removeClass("disp")
+      }
+      $(".ye").text(ye);
+    }
+
   }
   else{
     if (!$(".pointer div").hasClass("disp")){
       $(".pointer div").addClass("disp")
-    films = films_list
     }
+    films = films_list
   }
   pagescount(films)
   pagination(currentpage)
@@ -101,23 +110,56 @@ function Filter() {
 
 
 
+
+
+// function Filter() {
+//   films =[];
+//   if ((localStorage.fiction!="" && localStorage.fiction!== undefined) || (localStorage.country!="" && localStorage.country!= undefined) || (localStorage.year!="" && localStorage.year!= undefined)){
+//     fict = localStorage.fiction;
+//     ctr = localStorage.country;
+//     ye = localStorage.year;
+//     for (i in films_list){
+//       if (films_list[i].fiction == fict){
+//         films.push(films_list[i])
+//       }
+//     }
+//     if ($(".fict").hasClass("disp")){
+//       $(".fict").removeClass("disp")
+//     }
+//     $(".fict").text(fict);
+//
+//   }
+//
+//   else{
+//     if (!$(".pointer div").hasClass("disp")){
+//       $(".pointer div").addClass("disp")
+//
+//     }
+//     films = films_list
+//   }
+//   pagescount(films)
+//   pagination(currentpage)
+// }
+
+
+
 $(".fiction_selector li").click(function(){
   $(".selector_list").addClass("disp");
-   let fict = $(this).text()
+  let fict = $(this).text()
   localStorage.setItem('fiction', fict);
   Filter();
 })
 
 $(".year_selector li").click(function(){
   $(".selector_list").addClass("disp");
-   let fict = $(this).text()
+  let fict = $(this).text()
   localStorage.setItem('year', fict);
   Filter();
 })
 
 $(".country_selector li").click(function(){
   $(".selector_list").addClass("disp");
-   let fict = $(this).text()
+  let fict = $(this).text()
   localStorage.setItem('country', fict);
   Filter();
 })
@@ -207,19 +249,29 @@ $(".year_selector_title").click(function(){
 
 
 $(document).mouseup( function(e){ // событие клика по веб-документу
-		let list = $( ".selector_list" ); // тут указываем ID элемента
-		if ( !list.is(e.target) // если клик был не по нашему блоку
-		    && list.has(e.target).length === 0 ) { // и не по его дочерним элементам
-			list.addClass("disp"); // скрываем его
-		}
-	});
-
-
-$('body').on('click', '.pointer div', function() {
-  localStorage.setItem('fiction', "");
-  Filter()
+  let list = $( ".selector_list" ); // тут указываем ID элемента
+  if ( !list.is(e.target) // если клик был не по нашему блоку
+  && list.has(e.target).length === 0 ) { // и не по его дочерним элементам
+    list.addClass("disp"); // скрываем его
+  }
 });
 
+
+$('.fict').click(function() {
+  localStorage.setItem('fiction', "");
+   $(this).addClass("disp")
+  Filter()
+});
+$('.ctr').click(function() {
+  localStorage.setItem('country', "");
+   $(this).addClass("disp")
+  Filter()
+});
+$('.ye').click(function() {
+  localStorage.setItem('year', "");
+   $(this).addClass("disp")
+  Filter()
+});
 
 
 
