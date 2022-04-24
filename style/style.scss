@@ -1,0 +1,79 @@
+// @font-face {
+//     font-family: Angelica; /* Имя шрифта */
+//     src: url("../fonts/ofont.ru_Angelica.ttf"); /* Путь к файлу со шрифтом */
+//    }
+@import "../style/header";
+@import "../style/main";
+@import "../style/footer";
+html, body {
+  margin: 0 0 0 0;
+
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+  margin: 0;
+  padding: 0;
+}
+
+.disp{
+  display: none;
+}
+
+@media screen and (max-width: 1820px){
+  .container{
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1260px){
+  .selector{
+    div{
+      position: relative;
+      left:calc(50% - 203px/2);
+    }
+  }
+
+  .head{
+    flex-direction: column;
+    align-items: center;
+  }
+  header{
+    height: 200px;
+  }
+  footer{
+    justify-content: center;
+  }
+  .container{
+    width: 400px;
+  }
+  .selector{
+    width: 200px;
+  }
+}
+@media screen and (max-width: 760px){
+  .pointer{
+    
+    justify-content: center;
+  }
+  header{
+    height: 340px;
+  }
+  .selectors{
+    flex-direction: column;
+  }
+  .container{
+    width: 310px;
+  }
+  .film{
+    width: 300px;
+    p{
+      font-size: 18px !important;
+    }
+    img{
+      width: 290px;
+      height: 450px;
+    }
+    div{
+      width: 300px;
+    }
+  }
+}

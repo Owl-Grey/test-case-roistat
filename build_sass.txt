@@ -1,0 +1,2 @@
+cd C:\Users\bruss\github\test-case-roistat\style
+sass style.scss style.css
