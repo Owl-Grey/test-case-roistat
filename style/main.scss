@@ -7,14 +7,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  min-height:100%;
+  min-height: 491px;
 }
 .film{
   width: 380px;
   margin-bottom: 80px;
   margin-right: 10px;
   margin-left: 10px;
-
+  &:hover{
+    transition-duration: .3s;
+    background: #A9A9A9;
+    box-shadow: 10px 8px 6px 6px rgba(0, 0, 0, 0.2);
+  }
   img{
     width: 380px;
     height: 520px;
@@ -63,6 +67,7 @@
       cursor: pointer;
       transition-duration: .4s;
       background-color: #00BFFF;
+      box-shadow: 10px 8px 6px 6px rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -86,6 +91,7 @@
     }
     &:hover{
       transition-duration: .3s;
+      box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
       background: #00BFFF;
       color:#FFFF;
     }

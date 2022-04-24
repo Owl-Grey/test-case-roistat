@@ -1,6 +1,7 @@
 header {
   height: 120px;
   background: #87CEFA;
+  box-shadow: 10px 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .selector {
@@ -21,6 +22,8 @@ header {
   padding-top: 35px;
 }
 .selector h1:hover {
+  color: #FFFFFF;
+  transition-duration: 0.3s;
   cursor: pointer;
 }
 
@@ -70,7 +73,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  min-height: 100%;
+  min-height: 491px;
 }
 
 .film {
@@ -78,6 +81,11 @@ header {
   margin-bottom: 80px;
   margin-right: 10px;
   margin-left: 10px;
+}
+.film:hover {
+  transition-duration: 0.3s;
+  background: #A9A9A9;
+  box-shadow: 10px 8px 6px 6px rgba(0, 0, 0, 0.2);
 }
 .film img {
   width: 380px;
@@ -128,6 +136,7 @@ header {
   cursor: pointer;
   transition-duration: 0.4s;
   background-color: #00BFFF;
+  box-shadow: 10px 8px 6px 6px rgba(0, 0, 0, 0.2);
 }
 
 .pagination {
@@ -151,6 +160,7 @@ header {
 }
 .pagination div:hover {
   transition-duration: 0.3s;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
   background: #00BFFF;
   color: white;
 }
@@ -182,6 +192,7 @@ footer {
   color: white;
   justify-content: flex-end;
   align-items: center;
+  box-shadow: 0px -10px 8px 8px rgba(0, 0, 0, 0.2);
 }
 footer div {
   display: flex;
