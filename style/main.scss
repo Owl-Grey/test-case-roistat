@@ -88,3 +88,26 @@
     }
   }
 }
+
+
+
+
+
+
+.film_fullinfo{
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: space-evenly;
+  img{
+    width: 30%;
+  }
+  h1{
+    font-size: 72px;
+  }
+  p{
+    font-size: 32px;
+  }
+  .info{
+    width: 900px;
+  }
+}
