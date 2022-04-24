@@ -1,4 +1,4 @@
-// document.cookie = "is_beta=1";
+// document.cookie = "is_beta=1"; //Задаю значение куки (у меня работает только в мозиле)
 
 let pages=1;
 let block="";
@@ -31,28 +31,53 @@ let films_list = [
 filter_params();
 Filter();
 
-function filter_params(){
+function filter_params(){ // создаю массив жанров, стран и годов из списка фильмов
   for (i in films_list) {
     fiction.push(films_list[i].fiction);
     country.push(films_list[i].country);
     year.push(films_list[i].year);
   }
-  uniqarr()
+  uniqarr() //фильтрую его
 }
 
-function pagescount(arr){
+function uniqarr(){
+  var uniquefict = fiction.filter(function(item, i, fiction) {
+    return i == fiction.indexOf(item);
+  });
+  var uniquecountry = country.filter(function(item, i, country) {
+    return i == country.indexOf(item);
+  });
+  var uniqueyear = year.filter(function(item, i, year) {
+    return i == year.indexOf(item);
+  });
+
+  for (i in uniquefict) {
+    block="<li>"+uniquefict[i]+"</li>"
+    $(".fiction_selector").append(block)
+  };
+  for (i in uniqueyear) {
+    block="<li>"+uniqueyear[i]+"</li>"
+    $(".year_selector").append(block)
+  };
+  for (i in uniquecountry) {
+    block="<li>"+uniquecountry[i]+"</li>"
+    $(".country_selector").append(block)
+  };
+}
+
+function pagescount(arr){ // подсчет количества страниц
   $(".pagination").empty();
   let quantity = arr.length;
   pages = Math.ceil(quantity/16);
   for (var i = 0; i < pages; i++) {
     block = "<div>"+(i+1)+"</div>"
-    $(".pagination").append(block);
+    $(".pagination").append(block); //Добавление блоков пагинации
   }
 }
 
 
 
-function pagination(current){
+function pagination(current){ //распределение фильмов по страницам
   $(".film-list").empty();
   head.scrollIntoView({block: "center", behavior: "smooth"})
   if (current < pages){
@@ -68,7 +93,7 @@ function pagination(current){
 }
 
 
-function Filter() {
+function Filter() { // фильтрация и добавление на страницу указателей года, страны и жанра
   films=[];
   if ((localStorage.fiction!="" && localStorage.fiction!== undefined) || (localStorage.country!="" && localStorage.country!== undefined) || (localStorage.year!="" && localStorage.year!== undefined)){
     films = films_list;
@@ -108,41 +133,18 @@ function Filter() {
   pagination(currentpage)
 }
 
+$('body').on('click', '.pagination div', function() { // Клик по пагинации
+  page = $(this).text()
+  pagination(page);
+});
 
 
 
 
-// function Filter() {
-//   films =[];
-//   if ((localStorage.fiction!="" && localStorage.fiction!== undefined) || (localStorage.country!="" && localStorage.country!= undefined) || (localStorage.year!="" && localStorage.year!= undefined)){
-//     fict = localStorage.fiction;
-//     ctr = localStorage.country;
-//     ye = localStorage.year;
-//     for (i in films_list){
-//       if (films_list[i].fiction == fict){
-//         films.push(films_list[i])
-//       }
-//     }
-//     if ($(".fict").hasClass("disp")){
-//       $(".fict").removeClass("disp")
-//     }
-//     $(".fict").text(fict);
-//
-//   }
-//
-//   else{
-//     if (!$(".pointer div").hasClass("disp")){
-//       $(".pointer div").addClass("disp")
-//
-//     }
-//     films = films_list
-//   }
-//   pagescount(films)
-//   pagination(currentpage)
-// }
 
 
 
+//Отслеживание кликов по дропдаун спискам
 $(".fiction_selector li").click(function(){
   $(".selector_list").addClass("disp");
   let fict = $(this).text()
@@ -165,62 +167,7 @@ $(".country_selector li").click(function(){
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-$('body').on('click', '.pagination div', function() {
-  page = $(this).text()
-  pagination(page);
-});
-
-
-
-function uniqarr(){
-  var uniquefict = fiction.filter(function(item, i, fiction) {
-    return i == fiction.indexOf(item);
-  });
-  var uniquecountry = country.filter(function(item, i, country) {
-    return i == country.indexOf(item);
-  });
-  var uniqueyear = year.filter(function(item, i, year) {
-    return i == year.indexOf(item);
-  });
-
-  for (i in uniquefict) {
-    block="<li>"+uniquefict[i]+"</li>"
-    $(".fiction_selector").append(block)
-  };
-  for (i in uniqueyear) {
-    block="<li>"+uniqueyear[i]+"</li>"
-    $(".year_selector").append(block)
-  };
-  for (i in uniquecountry) {
-    block="<li>"+uniquecountry[i]+"</li>"
-    $(".country_selector").append(block)
-  };
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Скрытие дропдаунов после выбора одного из пунктов.
 $(".fiction_selector_title").click(function(){
   if ($(".selector_list_fict").hasClass("disp")){
     $(".selector_list_fict").removeClass("disp");
@@ -247,16 +194,16 @@ $(".year_selector_title").click(function(){
 })
 
 
-
-$(document).mouseup( function(e){ // событие клика по веб-документу
-  let list = $( ".selector_list" ); // тут указываем ID элемента
-  if ( !list.is(e.target) // если клик был не по нашему блоку
-  && list.has(e.target).length === 0 ) { // и не по его дочерним элементам
-    list.addClass("disp"); // скрываем его
+// закрытие дропдаунов при клике в свободном месте.
+$(document).mouseup( function(e){
+  let list = $( ".selector_list" );
+  if ( !list.is(e.target)
+  && list.has(e.target).length === 0 ) {
+    list.addClass("disp");
   }
 });
 
-
+// Удаление с экрана указателей при клике на них, с изменением фильтрации
 $('.fict').click(function() {
   localStorage.setItem('fiction', "");
    $(this).addClass("disp")
@@ -274,20 +221,18 @@ $('.ye').click(function() {
 });
 
 
-
-$('body').on('click', '.film', function() {
+// открытие новой страницы при клике на блок фильма
+$('body').on('click', '.film', function() { //сделано таким образом, т.к. фильмы генерируются из списка.
   title = $(this).find(".name").text()
   for (i in films_list){
     if (films_list[i].name == title){
       opennewpage(i);
     }
   }
-
-
 });
 
 
-function opennewpage(i){
+function opennewpage(i){ // сохранение всех необходимых данных и открытие страницы.
   localStorage.film_url = films_list[i].url
   localStorage.film_title = films_list[i].name
   localStorage.film_fiction = films_list[i].fiction
@@ -296,17 +241,6 @@ function opennewpage(i){
   localStorage.film_descr = films_list[i].desr
   window.open('film-page.html');
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

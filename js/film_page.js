@@ -1,3 +1,4 @@
+// Заполение страницы фильмами.
   $('.film_fullinfo img').attr('src', localStorage.film_url)
   $('.film_fullinfo .title').text(localStorage.film_title)
   $('.film_fullinfo .info_fiction').text("Жанр: " + localStorage.film_fiction)
