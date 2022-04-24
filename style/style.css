@@ -1,10 +1,6 @@
 header {
   height: 120px;
-<<<<<<< HEAD
   background: #87CEFA;
-=======
-  background: red;
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 }
 
 .selector {
@@ -28,11 +24,7 @@ header {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .ul_selector {
-=======
-.fiction_selector {
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -41,7 +33,6 @@ header {
   padding-bottom: 25px;
   color: #A9A9A9;
 }
-<<<<<<< HEAD
 .ul_selector li {
   margin-bottom: 15px;
 }
@@ -49,20 +40,10 @@ header {
   margin-bottom: 0px;
 }
 .ul_selector li:hover {
-=======
-.fiction_selector li {
-  margin-bottom: 15px;
-}
-.fiction_selector li:last-child {
-  margin-bottom: 0px;
-}
-.fiction_selector li:hover {
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
   cursor: pointer;
   color: #000000;
 }
 
-<<<<<<< HEAD
 .selectors {
   display: flex;
   margin-top: 10px;
@@ -79,8 +60,6 @@ header {
   height: 80px;
 }
 
-=======
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 .container {
   width: 1600px;
   margin: auto;
@@ -91,10 +70,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-<<<<<<< HEAD
   min-height: 100%;
-=======
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 }
 
 .film {
@@ -154,7 +130,6 @@ header {
 .pagination {
   display: flex;
   font-size: 24px;
-<<<<<<< HEAD
   margin-bottom: 50px;
   justify-content: center;
 }
@@ -196,25 +171,10 @@ footer p {
 }
 footer .smile {
   margin-left: 10px;
-=======
-}
-.pagination div {
-  border: 1px solid;
-  margin-right: 10px;
-}
-
-footer {
-  height: 120px;
-  background: red;
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 }
 
 html, body {
   margin: 0 0 0 0;
-<<<<<<< HEAD
-=======
-  width: 100%;
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 }
 
 h1, h2, h3, h4, h5, h6, p, span {
@@ -226,7 +186,6 @@ h1, h2, h3, h4, h5, h6, p, span {
   display: none;
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 1820px) {
   .container {
     width: 1200px;
@@ -291,6 +250,4 @@ h1, h2, h3, h4, h5, h6, p, span {
   }
 }
 
-=======
->>>>>>> 4850981322c918147623063ca7c48e94d099df93
 /*# sourceMappingURL=style.css.map */
